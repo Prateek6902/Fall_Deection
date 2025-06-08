@@ -1,4 +1,4 @@
-## **🧠 Fall Detection Using Deep Learning**
+# **🧠 Fall Detection Using Deep Learning**
 This repository contains a Jupyter Notebook (fall_final.ipynb) implementing a fall detection system using deep learning techniques. The project aims to identify and classify fall activities from video or image input using a hybrid model involving human detection and action classification.
 
 ## ***📂 Project Structure***
