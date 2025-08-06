@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Fall Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-user-shield"></i> Smart Fall Detection System</h1>
+            <p class="subtitle">Using YOLOv8 and CNN for accurate fall detection</p>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="main-content">
+                <div class="model-info-section">
+                    <h2><i class="fas fa-info-circle"></i> About the System</h2>
+                    <div class="info-card">
+                        <h3>Problem Statement</h3>
+                        <p>Falls are a leading cause of injury among elderly individuals. Our system provides real-time fall detection to enable quick response and assistance.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Technology Stack</h3>
+                        <p><strong>YOLOv8</strong>: For real-time fall state detection (falling, not falling, sitting) with high accuracy.</p>
+                        <p><strong>CNN Classifier</strong>: For posture classification refinement when needed.</p>
+                        <p>The combined model achieves 98% accuracy in our tests.</p>
+                    </div>
+                </div>
+
+                <div class="upload-section">
+                    <h2><i class="fas fa-cloud-upload-alt"></i> Test the System</h2>
+                    <div class="upload-options">
+                        <div class="upload-card" id="image-upload-card">
+                            <i class="fas fa-image"></i>
+                            <h3>Upload Image</h3>
+                            <form id="upload-form" enctype="multipart/form-data">
+                                <input type="file" id="file-input" name="file" accept="image/*" style="display: none;">
+                                <button type="button" class="btn" onclick="document.getElementById('file-input').click()">Choose File</button>
+                                <button type="submit" class="btn btn-primary">Process Image</button>
+                            </form>
+                        </div>
+                        <div class="upload-card">
+                            <i class="fas fa-video"></i>
+                            <h3>Upload Video</h3>
+                            <p>(Coming Soon)</p>
+                        </div>
+                        <div class="upload-card">
+                            <i class="fas fa-camera"></i>
+                            <h3>Live Stream</h3>
+                            <p>(Coming Soon)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-section" id="results-section" style="display: none;">
+                    <h2><i class="fas fa-chart-bar"></i> Detection Results</h2>
+                    <div class="result-container">
+                        <div class="image-result">
+                            <h3>Processed Image</h3>
+                            <div class="image-box">
+                                <img id="result-image" src="" alt="Detection Result">
+                            </div>
+                        </div>
+                        <div class="classification-result">
+                            <h3>Detection Report</h3>
+                            <div id="classification-results" class="report-box"></div>
+                        </div>
+                    </div>
+                    <div class="charts-section">
+                        <div class="chart-container">
+                            <h3>Confusion Matrix</h3>
+                            <div class="chart-box">
+                                <img id="confusion-matrix" src="" alt="Confusion Matrix">
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Performance Metrics</h3>
+                            <div class="chart-box">
+                                <img id="metrics-chart" src="" alt="Performance Metrics">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Smart Fall Detection System &copy; 2023 | Powered by YOLOv8 and CNN</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
