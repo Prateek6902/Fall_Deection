@@ -1,51 +1,126 @@
-# **🧠 Fall Detection Using Deep Learning**
-This repository contains a Jupyter Notebook (fall_final.ipynb) implementing a fall detection system using deep learning techniques. The project aims to identify and classify fall activities from video or image input using a hybrid model involving human detection and action classification.
+# **🧠 FSmart Fall Detection System**
+An advanced fall detection web application built with Flask, YOLOv8, and a CNN classifier to identify human fall states (fall, not fall, sitting) from images.
+The system allows users to upload images, performs detection and classification, and provides detailed reports with annotated images, confusion matrix, and performance metrics.
 
 ## ***📂 Project Structure***
-fall_final.ipynb: Main Jupyter Notebook implementing the fall detection pipeline.
+```fall-detection/
+│
+├── app.py                # Flask backend application
+├── models/               # Pre-trained YOLOv8 and CNN model files
+│     ├── best.pt
+│     └── best_cnn_fall_detection.pth
+│
+├── static/               # Static files (CSS, JS, images)
+│     ├── css/
+│     │     └── style.css
+│     ├── js/
+│     │     └── script.js
+│     └── images/
+│           └── results/  # Generated annotated results
+│
+├── templates/            # HTML templates
+│     └── index.html
+│
+├── uploads/              # Uploaded files (images/videos)
+│
+└── requirements.txt      # Python dependencies
 
-models/: (Optional) Folder containing YOLOv8 weights or ResNet/CNN models.
-
-data/: (Optional) Directory containing video or image samples used for testing.
-
-README.md: Project overview and setup guide.
-
+```
 ## ***🚀 Features***
-Real-time fall activity detection
-Person detection using YOLOv8
-Activity classification using ResNet-18 or CNN
-Annotated frame output with class labels (e.g., falling, standing, sitting)
-Designed for elder safety and smart surveillance systems
+YOLOv8 Object Detection: Detects persons in an image and identifies potential fall states.
+
+CNN Posture Classification: Refines YOLO predictions for higher accuracy.
+
+Detailed Reports:
+
+Annotated image with bounding boxes and class labels.
+
+Detection summary with confidence scores.
+
+Confusion matrix visualization.
+
+Performance metrics chart (Accuracy, Precision, Recall, F1 Score).
+
+Responsive UI with intuitive upload and result display.
+
+Support for Images (video/live stream coming soon).
+
+
 
 ## ***🛠️ Technologies Used***
-Python
+Backend:
+Python 3.x
+
+Flask
+
 OpenCV
-PyTorch
-YOLOv8 (via Ultralytics)
-ResNet-18 / Custom CNN
-Jupyter Notebook
 
-## **🧱 Architecture Overview**
-Input: Video frames captured via webcam or pre-recorded input
-Person Detection: YOLOv8 draws bounding boxes and crops regions of interest
-Feature Extraction and Classification: CNN or ResNet classifies the cropped image into actions (falling, walking, etc.)
-Alert System (Optional): Trigger warning/log if fall detected
-Display: Annotated frame with class label and confidence
-![1749303987972](https://github.com/user-attachments/assets/7b7415fd-bdf0-426b-aaea-d3f2bcacb4c4)
+PyTorch & TorchVision
 
-## ***📊 Sample Results***
-Images or video output will be displayed in the notebook showing detected human actions with bounding boxes and labels such as:
-Fall Detected
-Sitting
-Walking
+Ultralytics YOLO
+
+Matplotlib
+
+PIL (Pillow)
+
+NumPy
+
+Frontend:
+HTML5 / CSS3 (Responsive, custom styling)
+
+JavaScript (Fetch API)
+
+Font Awesome Icons
+
+Google Fonts
+## *** 📂 How It Works***
+Upload Image
+
+Select an image with people (standing, sitting, or falling) and click Process Image.
+
+YOLOv8 Detection
+
+Detects people and assigns an initial class label (fall, not_fall, sitting).
+
+CNN Refinement
+
+Crops detected person region and refines classification with a CNN model.
+
+Report Generation
+
+Annotated image saved in static/images/results/.
+
+JSON response sent to frontend with detection data, confusion matrix, and metrics chart.
+
+Frontend Rendering
+
+Displays annotated image, detection summary, bounding box details, and probability analysis.
+
+## *** 📊 Example Output***
+Annotated Image:
+Bounding boxes color-coded:
+
+Red → Fall
+
+Green → Not Fall
+
+Blue → Sitting
+
+Detection Summary:
+YOLO Initial Detection + confidence
+
+Final CNN Classification + confidence
+
+Bounding box coordinates
+
+CNN probability breakdown
+
+Charts:
+Confusion Matrix (sample data for demo)
+
+Performance Metrics bar chart
 ![Minimalist Pancake Day Mood Photo Collage](https://github.com/user-attachments/assets/5a2e85fe-17e2-4531-beb1-91f7cca77b5b)
 
-
-## ***📈 Performance***
-Model accuracy and frame rate can vary based on:
-CPU vs GPU execution
-Model size (YOLOv8n vs YOLOv8l)
-Input resolution
 
 ## ***📌 Use Cases***
 Elderly fall detection in homes
